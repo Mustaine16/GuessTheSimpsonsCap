@@ -27,10 +27,12 @@ const QuizContainer = ({ round, nextRound, setGameOver }) => {
 
   //Check the user answer
   useEffect(() => {
-    if (userAnswer) (userAnswer === caption.id)
-      ? nextRound()
-      : setGameOver(true);
-
+    if (userAnswer) {
+      (userAnswer === caption.id)
+        ? nextRound()
+        : setGameOver(true);
+    }
+    setUserAnswer("")
   }, [userAnswer])
 
   async function fetchRandomEpisode() {
