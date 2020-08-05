@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import GameProgress from "./GameProgress"
 import QuizContainer from "./QuizContainer"
+import GameOver from "./GameOver"
 
 const Game = () => {
 
@@ -13,22 +14,22 @@ const Game = () => {
     setRound((round) => round+1)
   }
 
-  if (gameOver) {
-    setTimeout(()=>{setRound(1);setGameOver(false)},500)
-    return `YOU LOST, your score: ${round-1}`
+  const handleRestartGame = () => {
+    setRound(1);
+    setGameOver(false)
   }
 
-  if (round === 11) return "YOU WIN"
+  if (gameOver) return <GameOver score={round-1} handleRestartGame={handleRestartGame}/>
 
   return (
-    <main>
+    <>
       <GameProgress round={round} />
       <QuizContainer
         round={round}
         nextRound={nextRound}
         setGameOver={setGameOver}
       />
-    </main>
+    </>
   )
 
 }

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 const Option = ({ opt, handleAnswer }) => {
 
   const { id, key, title, wikiLink } = opt
+  const optionRef = useRef()
 
   return (
     <li
-      onClick={(e) => handleAnswer(id)}
+      className="option"
+      onClick={(e) => handleAnswer(id, optionRef)}
+      ref={optionRef}
       tabIndex="0"
     >
       <span>{title}</span>
       <a
+        className="option__info"
         href={wikiLink}
         rel="noopener noreferrer"
         target="_blank"

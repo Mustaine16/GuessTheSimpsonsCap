@@ -1,0 +1,25 @@
+.gameOver{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn .6s;
+}
+
+.gameOver__img{
+  max-width: 100%;
+}
+
+.gameOver__resetButton{
+  margin: 1em auto;
+  padding: 1em;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.gameOver__resetButton:hover{
+  background-color: var(--pinkDonut);
+  color: white;
+}

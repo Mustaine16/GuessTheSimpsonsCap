@@ -7,7 +7,7 @@ const OptionsContainer = ({ options, loading, handleAnswer }) => {
   console.log("running optContainer");
   const [shuffled, setShuffled] = useState(shuffle(options))
   return (
-    <ul>
+    <ul className="optionList">
       {
         shuffled.map(
           (opt) => <Option opt={opt} handleAnswer={handleAnswer} key={opt.id} />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Quiz from "./Quiz"
+import Loader from "./Loader"
 
 const QuizContainer = ({ round, nextRound, setGameOver }) => {
 
@@ -26,12 +27,15 @@ const QuizContainer = ({ round, nextRound, setGameOver }) => {
   }, [options])
 
   //Check the user answer
+  //Set timeout allows to show to the user if the answer is wrong or right
   useEffect(() => {
     if (userAnswer) {
-      (userAnswer === caption.id)
+      checkAnswer()
         ? nextRound()
         : setGameOver(true);
     }
+
+    //Reset user's answer
     setUserAnswer("")
   }, [userAnswer])
 
@@ -91,11 +95,19 @@ const QuizContainer = ({ round, nextRound, setGameOver }) => {
 
   }
 
-  function handleAnswer(answerId) {
-    setUserAnswer(answerId)
+  function checkAnswer(asnwerId = userAnswer) {
+    return (asnwerId === caption.id)
   }
 
-  if (loading) return "LOADING"
+  function handleAnswer(answerId, answerRef) {
+    console.log(answerRef.current);
+    checkAnswer(answerId)
+      ? answerRef.current.classList.add("correct")
+      : answerRef.current.classList.add("wrong")
+    setTimeout(() => setUserAnswer(answerId), 500)
+  }
+
+  if (loading) return <Loader />
 
   return (
     <Quiz

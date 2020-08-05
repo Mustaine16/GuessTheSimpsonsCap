@@ -1,0 +1,13 @@
+
+.loader{
+  width: 100%;
+}
+
+.loader__img{
+  display: block;
+  max-width: 200px;
+  margin: auto;
+  animation: fadeIn 1s ease-out, rotate 1s infinite;
+  -webkit-animation: fadeIn 1s ease-out, rotate 1s infinite ;
+  -moz-animation: fadeIn 1s ease-out,rotate 1s infinite ;
+}
